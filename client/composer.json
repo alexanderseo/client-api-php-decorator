@@ -1,0 +1,19 @@
+{
+  "name": "zanin/client",
+  "description": "api client",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "zanin",
+      "email": "alexanderzanin@yandex.ru"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Client\\": "src"
+    }
+  }
+}
