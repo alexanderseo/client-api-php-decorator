@@ -1,37 +1,37 @@
 <?php
+
 namespace Client\Response;
 
 use Client\Interfaces\IError;
-use Client\Interfaces\ISignIn;
-use Client\Interfaces\ISignInResponse;
+use Client\Interfaces\ILogoutResponse;
+use Client\Interfaces\ILogout;
 use Client\ResponsesObjects\ErrorResponse;
-use Client\ResponsesObjects\SignInResponse;
+use Client\ResponsesObjects\LogoutResponse;
 
-class SignIn implements ISignIn
+class Logout implements ILogout
 {
     /**
-     * @var ISignInResponse
+     * @var LogoutResponse
      */
     private $result;
-
     /**
-     * @var IError
+     * @var ErrorResponse
      */
     private $error;
 
     public function __construct(array $array)
     {
-        if (array_key_exists('lkUserID', $array)) {
-            $this->result = new SignInResponse($array['lkUserID'] ?? null, $array['token'] ?? null, $array['sessionID'] ?? null);
-        } else {
+        if (array_key_exists('message', $array)) {
             $this->error = new ErrorResponse($array['message'] ?? null);
+        } else {
+            $this->result = new LogoutResponse($array['result'] ?? null);
         }
     }
 
     /**
-     * @return ISignInResponse
+     * @return ILogoutResponse
      */
-    public function getResult(): ISignInResponse
+    public function getResult(): ILogoutResponse
     {
         return $this->result;
     }

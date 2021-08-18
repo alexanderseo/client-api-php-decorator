@@ -1,13 +1,14 @@
 <?php
+
 namespace Client\Response;
 
 use Client\Interfaces\IError;
-use Client\Interfaces\ISignIn;
+use Client\Interfaces\ISignInByToken;
 use Client\Interfaces\ISignInResponse;
 use Client\ResponsesObjects\ErrorResponse;
 use Client\ResponsesObjects\SignInResponse;
 
-class SignIn implements ISignIn
+class SignInByToken implements ISignInByToken
 {
     /**
      * @var ISignInResponse
