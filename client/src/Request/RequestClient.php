@@ -1,7 +1,9 @@
 <?php
 namespace Client\Request;
 
-class RequestClient
+use Client\Interfaces\IRequest;
+
+class RequestClient implements IRequest
 {
 
     public function requestPost(string $endpoint, array $bodyRequest): string

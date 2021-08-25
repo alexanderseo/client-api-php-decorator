@@ -5,42 +5,37 @@ namespace Client\Response;
 use Client\Interfaces\IError;
 use Client\Interfaces\ISignInByToken;
 use Client\Interfaces\ISignInResponse;
-use Client\ResponsesObjects\ErrorResponse;
-use Client\ResponsesObjects\SignInResponse;
 
 class SignInByToken implements ISignInByToken
 {
     /**
-     * @var ISignInResponse
+     * @var ?ISignInResponse
      */
     private $result;
 
     /**
-     * @var IError
+     * @var ?IError
      */
     private $error;
 
-    public function __construct(array $array)
+    public function __construct(?ISignInResponse $result, ?IError $error)
     {
-        if (array_key_exists('lkUserID', $array)) {
-            $this->result = new SignInResponse($array['lkUserID'] ?? null, $array['token'] ?? null, $array['sessionID'] ?? null);
-        } else {
-            $this->error = new ErrorResponse($array['message'] ?? null);
-        }
+        $this->result = $result;
+        $this->error = $error;
     }
 
     /**
-     * @return ISignInResponse
+     * @return ?ISignInResponse
      */
-    public function getResult(): ISignInResponse
+    public function getResult(): ?ISignInResponse
     {
         return $this->result;
     }
 
     /**
-     * @return IError
+     * @return ?IError
      */
-    public function getError(): IError
+    public function getError(): ?IError
     {
         return $this->error;
     }

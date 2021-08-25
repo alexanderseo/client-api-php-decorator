@@ -10,7 +10,7 @@ class ErrorResponse implements IError
      */
     private $message;
 
-    public function __construct($message)
+    public function __construct(string $message)
     {
         $this->message = $message;
     }

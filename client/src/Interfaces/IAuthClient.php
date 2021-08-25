@@ -7,7 +7,4 @@ interface IAuthClient
 
     public function signInByToken(string $token): ISignInByToken;
 
-    public function validateSessionID(string $sessionID): IValidateSession;
-
-    public function logout(string $sessionID): ILogout;
 }
